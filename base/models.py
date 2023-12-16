@@ -1,8 +1,11 @@
 from django.db import models
-from django.http import HttpResponseRedirect
-from django.urls import reverse
 from accounts.models import User
 import os
+
+def university_logo_upload_path(instance, filename):
+    filename, ext = os.path.splitext(filename)
+    new_filename = f"logo_{instance.name}_{instance.country}{ext}"
+    return os.path.join('universities', new_filename)
 
 def resume_profile_image_upload_path(instance, filename):
     filename, ext = os.path.splitext(filename)
@@ -50,7 +53,7 @@ class Experience(models.Model):
 class University(models.Model):
     name = models.CharField(max_length=100, unique=True)
     country = models.ForeignKey(Country, on_delete=models.CASCADE)
-    logo = models.ImageField()
+    logo = models.ImageField(upload_to=university_logo_upload_path)
 
     def __str__(self):
         return f'{self.name}, {self.country.name}'

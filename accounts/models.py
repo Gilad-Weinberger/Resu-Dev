@@ -37,7 +37,6 @@ class User(AbstractBaseUser, PermissionsMixin):
         blank=True,
         upload_to=profile_image_upload_path
     )
-    about = models.TextField(null=True, max_length=300)
 
     is_staff = models.BooleanField(
         _('staff status'),
