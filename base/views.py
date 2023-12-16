@@ -5,6 +5,8 @@ from .resume_forms import *
 from accounts.models import User
 from django.shortcuts import redirect, get_object_or_404
 from datetime import datetime
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 
 @login_required
 def home(request):
