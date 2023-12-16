@@ -1,0 +1,84 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Handlee&display=swap");
+body {
+  margin: 0px;
+  font-family: "Rubik";
+}
+
+.main {
+  width: calc(100vw - 220px);
+  padding: 8px 0px 0px 0px;
+}
+.main .resume {
+  display: flex;
+  align-items: center;
+}
+.main .resume .edit {
+  height: calc(100vh - 145px);
+  width: calc(40vw - 30px);
+  padding: 20px 50px;
+  position: relative;
+}
+.main .resume .edit .title {
+  margin: 0px;
+  margin-bottom: 5px;
+}
+.main .resume .edit .semi-title {
+  margin: 0px;
+}
+.main .resume .edit form .line,
+.main .resume .edit form .buttons {
+  width: calc(40vw - 30px);
+  margin: 20px 0px;
+}
+.main .resume .edit form .line.two,
+.main .resume .edit form .buttons.two {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.main .resume .edit form .line .full-input,
+.main .resume .edit form .buttons .full-input {
+  margin: 0px;
+}
+.main .resume .edit form .line .full-input textarea,
+.main .resume .edit form .buttons .full-input textarea {
+  width: calc(40vw - 30px); /* Set the width to the desired value */
+  min-height: 200px; /* Define a minimum height */
+  max-height: 400px;
+  resize: vertical;
+  padding: 8px 15px;
+  border-radius: 5px;
+  border: 1px solid black;
+  box-sizing: border-box;
+  font-family: "Handlee";
+  letter-spacing: 0.6px;
+  font-size: 15px;
+}
+.main .resume .edit form .line button,
+.main .resume .edit form .buttons button {
+  cursor: pointer;
+}
+.main .resume .edit form .line .next,
+.main .resume .edit form .line .back,
+.main .resume .edit form .buttons .next,
+.main .resume .edit form .buttons .back {
+  border-radius: 30px;
+  padding: 13px 18px;
+  font-weight: 700;
+  border: none;
+}
+.main .resume .edit form .line .next,
+.main .resume .edit form .buttons .next {
+  background-color: #e2914e;
+}
+.main .resume .edit form .line .back,
+.main .resume .edit form .buttons .back {
+  padding: 13px 28px;
+  background-color: white;
+  border: 1px solid rgb(155, 155, 155);
+}
+.main .resume .edit form .buttons {
+  position: absolute;
+  bottom: 0px;
+}/*# sourceMappingURL=resume_bio.css.map */

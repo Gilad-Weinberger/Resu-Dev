@@ -1,0 +1,62 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ResuDev | Your Details</title>
+    <link
+      rel="stylesheet"
+      href="{% static 'scss/resume/resume_details.css' %}"
+    />
+  </head>
+  <body>
+    {% include 'components/navbar.html' %}
+    <div class="main">
+      {% include 'components/resume_navbar.html' %}
+      <div class="resume">
+        <div class="edit">
+          <h2 class="title">Your Resume Heading</h2>
+          <p class="semi-title">How do you want employers to contact you?</p>
+          <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <img
+              class="profile-image"
+              src="{{ resume.profile_image.url }}"
+              alt=""
+            />
+            <div class="line">
+              <p class="full-label">{{ form.job_title.label_tag }}</p>
+              <p class="full-input">{{ form.job_title }}</p>
+            </div>
+            <div class="line">
+              <p class="full-label">{{ form.full_name.label_tag }}</p>
+              <p class="full-input">{{ form.full_name }}</p>
+            </div>
+            <div class="line two">
+              <div class="object">
+                <p class="half-label">{{ form.email.label_tag }}</p>
+                <p class="half-input">{{ form.email }}</p>
+              </div>
+              <div class="object">
+                <p class="half-label">{{ form.phone.label_tag }}</p>
+                <p class="half-input">{{ form.phone }}</p>
+              </div>
+            </div>
+            <div class="line">
+              <p class="full-label">{{ form.address.label_tag }}</p>
+              <p class="full-input">{{ form.address }}</p>
+            </div>
+            <div class="buttons two">
+              <button class="back" type="submit" name="back">Back</button>
+              <button class="next" type="submit" name="next">
+                Save & Next
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

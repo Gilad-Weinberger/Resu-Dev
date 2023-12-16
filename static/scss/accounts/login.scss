@@ -1,0 +1,21 @@
+ $color-dark: #220c2d;
+$color-light-orange: #fbc99d;
+
+body{
+    margin: 0px;
+    background-color: $color-light-orange;
+}
+.main{
+    height: calc(100vh - 58px);
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .login{
+        background-color: $color-dark;
+        padding: 45px 30px;
+        border-radius: 30px 0px 30px 0px;
+        text-align: center;
+        color: white;
+    }
+}

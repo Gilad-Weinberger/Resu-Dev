@@ -1,0 +1,116 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Handlee&display=swap");
+body {
+  margin: 0px;
+  font-family: "Rubik";
+}
+
+.main {
+  width: calc(100vw - 220px);
+  padding: 8px 0px 0px 0px;
+}
+.main .resume {
+  display: flex;
+  align-items: center;
+}
+.main .resume .edit {
+  height: calc(100vh - 145px);
+  width: calc(40vw - 30px);
+  padding: 20px 50px;
+  position: relative;
+}
+.main .resume .edit .title {
+  margin: 0px;
+  margin-bottom: 5px;
+}
+.main .resume .edit .semi-title {
+  margin: 0px;
+}
+.main .resume .edit .all-experiences {
+  width: calc(40vw - 30px);
+}
+.main .resume .edit .all-experiences .experience {
+  border-bottom: 1px solid #ccc;
+}
+.main .resume .edit .all-experiences .experience .top {
+  margin-top: 20px;
+  width: calc(40vw - 30px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.main .resume .edit .all-experiences .experience .top .job-title {
+  margin: 0px;
+}
+.main .resume .edit .all-experiences .experience .top .right {
+  display: flex;
+  align-items: center;
+  width: 60px;
+}
+.main .resume .edit .all-experiences .experience .top .right i {
+  background-color: #e3e3e2;
+  padding: 6px;
+  border-radius: 50%;
+  font-size: 14px;
+}
+.main .resume .edit .all-experiences .experience .top .right .edit-icon {
+  margin-right: 20px;
+}
+.main .resume .edit .all-experiences .experience .city-time {
+  margin-top: 10px;
+  margin-bottom: 0px;
+}
+.main .resume .edit .all-experiences .experience .achiev-list {
+  padding-left: 25px;
+}
+.main .resume .edit .all-experiences .experience .achiev-list .achiev {
+  font-size: 15px;
+}
+.main .resume .edit .all-experiences .experience:last-child {
+  border-bottom: none;
+}
+.main .resume .edit form button {
+  cursor: pointer;
+}
+.main .resume .edit form .add {
+  background: none;
+  border: none;
+  font-size: 15px;
+  font-weight: 600;
+  margin-top: 5px;
+}
+.main .resume .edit form .add .add-icon {
+  border-radius: 50%;
+  padding: 5px 6px;
+  background-color: black;
+  color: white;
+  margin-right: 5px;
+}
+.main .resume .edit form .buttons {
+  width: calc(40vw - 30px);
+  position: absolute;
+  bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.main .resume .edit form .buttons .next,
+.main .resume .edit form .buttons .back {
+  border-radius: 30px;
+  padding: 13px 18px;
+  font-weight: 700;
+  border: none;
+}
+.main .resume .edit form .buttons .next {
+  background-color: #e2914e;
+}
+.main .resume .edit form .buttons .back {
+  padding: 13px 28px;
+  background-color: white;
+  border: 1px solid rgb(155, 155, 155);
+}
+.main .resume .result {
+  height: calc(100vh - 145px);
+  width: calc(40vw - 30px);
+  padding: 20px 50px;
+}/*# sourceMappingURL=resume_experience.css.map */

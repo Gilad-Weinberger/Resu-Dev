@@ -1,0 +1,17 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ResuDev | DashBoard</title>
+    <link rel="stylesheet" href="{% static 'scss/resume/resume_skills.css' %}" />
+  </head>
+  <body>
+    {% include 'components/navbar.html' %}
+    <div class="main">
+      {% include 'components/resume_navbar.html' %}
+    </div>
+  </body>
+</html>

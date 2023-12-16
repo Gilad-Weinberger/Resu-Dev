@@ -1,0 +1,114 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Handlee&display=swap");
+
+$color-dark: #220c2d;
+$color-orange: #e2914e;
+$color-light-orange: #fbc99d;
+
+body {
+  margin: 0px;
+  font-family: "Rubik";
+}
+.main {
+  width: calc(100vw - 220px);
+  padding: 8px 0px 0px 0px;
+  .resume {
+    display: flex;
+    align-items: center;
+    $width: calc(40vw - 30px);
+    $half-width: calc(($width - 50px) / 2);
+    .edit {
+      height: calc(100vh - 145px);
+      width: $width;
+      padding: 20px 50px;
+      position: relative;
+      .title {
+        margin: 0px;
+        margin-bottom: 5px;
+      }
+      .semi-title {
+        margin: 0px;
+      }
+      form {
+        .profile-image {
+          border-radius: 50%;
+          height: 150px;
+          width: 150px;
+          object-fit: cover;
+          margin-top: 20px;
+        }
+        .line,
+        .buttons {
+          width: $width;
+          margin: 20px 0px;
+          &.two {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+          }
+          .full-label {
+            width: $width;
+            margin: 0px 0px 5px 0px;
+          }
+          .full-input {
+            margin: 0px;
+            input,
+            select {
+              width: $width;
+              padding: 8px 15px;
+              border-radius: 20px;
+              border: 1px solid black;
+            }
+            select {
+              width: calc($width + 30px);
+            }
+          }
+          .object {
+            width: $half-width;
+            .half-label {
+              width: $half-width;
+              margin: 0px 0px 5px 0px;
+            }
+            .half-input {
+              margin: 0px;
+              input {
+                width: $half-width;
+                padding: 8px 15px;
+                border-radius: 20px;
+                border: 1px solid black;
+              }
+            }
+          }
+          button {
+            cursor: pointer;
+          }
+          .next,
+          .back {
+            border-radius: 30px;
+            padding: 13px 18px;
+            font-weight: 700;
+            border: none;
+          }
+          .next {
+            background-color: $color-orange;
+          }
+          .back {
+            padding: 13px 28px;
+            background-color: white;
+            border: 1px solid rgb(155, 155, 155);
+            visibility: hidden;
+          }
+        }
+        .buttons {
+          position: absolute;
+          bottom: 0px;
+        }
+      }
+    }
+    .result {
+      height: calc(100vh - 145px);
+      width: $width;
+      padding: 20px 50px;
+    }
+  }
+}

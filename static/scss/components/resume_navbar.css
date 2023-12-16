@@ -1,0 +1,68 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Handlee&display=swap");
+.main-navbar {
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.main-navbar .menu {
+  width: 490px;
+  display: flex;
+  justify-content: space-between;
+}
+.main-navbar .menu .item {
+  padding: 10px 7px 10px 10px;
+  position: relative;
+  background-color: #eeeeee;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: black;
+}
+.main-navbar .menu .item .t1,
+.main-navbar .menu .item .t2 {
+  position: absolute;
+  left: -15px;
+  bottom: 0px;
+  width: 15px;
+  height: 20px;
+  background: linear-gradient(to bottom right, rgba(34, 12, 45, 0) 0%, rgba(34, 12, 45, 0) 50%, #eeeeee 50%, #eeeeee 100%);
+}
+.main-navbar .menu .item .t2 {
+  top: 0px;
+  background: linear-gradient(to top right, rgba(34, 12, 45, 0) 0%, rgba(34, 12, 45, 0) 50%, #eeeeee 50%, #eeeeee 100%);
+}
+.main-navbar .menu .item .triangle {
+  position: absolute;
+  right: -13px;
+  margin-left: 5px;
+  border-top: 19px solid transparent;
+  border-left: 15px solid #eeeeee;
+  border-bottom: 19px solid transparent;
+}
+.main-navbar .menu .item.end {
+  padding: 10px 20px 10px 10px;
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+}
+.main-navbar .menu .item.start {
+  padding: 10px 10px 10px 20px;
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+}
+.main-navbar .menu .item.now {
+  background-color: #fbc99d;
+}
+.main-navbar .menu .item.now .t1,
+.main-navbar .menu .item.now .t2 {
+  background: linear-gradient(to bottom right, rgba(34, 12, 45, 0) 0%, rgba(34, 12, 45, 0) 50%, #fbc99d 50%, #fbc99d 100%);
+}
+.main-navbar .menu .item.now .t2 {
+  top: 0px;
+  background: linear-gradient(to top right, rgba(34, 12, 45, 0) 0%, rgba(34, 12, 45, 0) 50%, #fbc99d 50%, #fbc99d 100%);
+}
+.main-navbar .menu .item.now .triangle {
+  border-left: 15px solid #fbc99d;
+}/*# sourceMappingURL=resume_navbar.css.map */

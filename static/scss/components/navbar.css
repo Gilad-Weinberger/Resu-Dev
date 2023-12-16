@@ -1,0 +1,15 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 50px;
+  height: 42px;
+  background-color: #220c2d;
+}
+.navbar .logo {
+  height: 35px;
+}
+.navbar .profile-link .profile-image {
+  height: 40px;
+  border-radius: 50%;
+}/*# sourceMappingURL=navbar.css.map */

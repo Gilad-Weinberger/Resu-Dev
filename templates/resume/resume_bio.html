@@ -1,0 +1,35 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ResuDev | DashBoard</title>
+    <link rel="stylesheet" href="{% static 'scss/resume/resume_bio.css' %}" />
+  </head>
+  <body>
+    {% include 'components/navbar.html' %}
+    <div class="main">
+      {% include 'components/resume_navbar.html' %}
+      <div class="resume">
+        <div class="edit">
+          <h2 class="title">Proffesional Summary</h2>
+          <p class="semi-title">Now, let's add a summary</p>
+          <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="line">
+              <p class="full-input">{{ form.bio }}</p>
+            </div>
+            <div class="buttons two">
+              <button class="back" type="submit" name="back">Back</button>
+              <button class="next" type="submit" name="next">
+                Save & Next
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

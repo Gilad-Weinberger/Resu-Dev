@@ -1,0 +1,102 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ResuDev | Experience</title>
+    <link
+      rel="stylesheet"
+      href="{% static 'scss/resume/resume_experience.css' %}"
+    />
+    <!-- Font Awesome: -->
+    <link
+      rel="stylesheet"
+      data-purpose="Layout StyleSheet"
+      title="Web Awesome"
+      href="/css/app-wa-2e45578ecf3b28ce6383d10b8c0bf4d0.css?vsn=d"
+    />
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.5.1/css/all.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-thin.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-solid.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-regular.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-light.css"
+    />
+    <!-- <meta http-equiv="refresh" content="1"> -->
+  </head>
+  <body>
+    {% include 'components/navbar.html' %}
+    <div class="main">
+      {% include 'components/resume_navbar.html' %}
+      <div class="resume">
+        <div class="edit">
+          <h2 class="title">Experience</h2>
+          <p class="semi-title">Review your experience history.</p>
+          <div class="all-experiences">
+            {% for exp in all_experiences %}
+            <div class="experience" data-expid="{{ exp.id }}">
+              <div class="top">
+                <h3 class="job-title">{{ exp.job_title }}</h3>
+                <div class="right">
+                  <i class="fa-regular fa-pen-to-square edit-icon"></i>
+                  <i class="fa-regular fa-trash delete-icon"></i>
+                </div>
+              </div>
+              {% if exp.is_current %}
+              <p class="city-time">
+                {{ exp.city }} - ({{ exp.start_date|date:"d/m/Y" }} - present)
+              </p>
+              {% else %}
+              <p class="city-time">
+                {{ exp.city }} - ({{ exp.start_date|date:"d/m/Y" }} -
+                {{exp.end_date|date:"d/m/Y" }})
+              </p>
+              {% endif %}
+              <ul class="achiev-list">
+                {% for achiv in exp.achievements.all %}
+                <li class="achiev">{{ achiv.text }}</li>
+                {% endfor %}
+              </ul>
+            </div>
+            {% endfor %}
+          </div>
+          <form class="add-form" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="add-experience">
+              <p class="f-job-title">{{ create_form.job_title }}</p>
+              <p>{{ create_form.city }} - ({{ create_form.start_date }} - {{ create_form.end_date }})</p>
+              <button class="save" type="submit" name="save">Save</button>
+            </div>
+          </form>
+          <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <button class="add" type="submit" name="add">
+              <i class="fa-solid fa-plus add-icon"></i> Add Experience
+            </button>
+            <div class="buttons two">
+              <button class="back" type="submit" name="back">Back</button>
+              <button class="next" type="submit" name="next">
+                Save & Next
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

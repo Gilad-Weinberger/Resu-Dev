@@ -1,0 +1,20 @@
+$color-dark: #220c2d;
+$color-light-orange: #fbc99d;
+
+.navbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 50px;
+    height: 42px;
+    background-color: $color-dark;
+    .logo{
+        height: 35px;
+    }
+    .profile-link{
+        .profile-image{
+            height: 40px;
+            border-radius: 50%;
+        }
+    }
+}

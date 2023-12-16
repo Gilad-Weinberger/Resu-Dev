@@ -1,0 +1,63 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{% static 'scss/components/resume_navbar.css' %}"
+    />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- <meta http-equiv="refresh" content="1" /> -->
+  </head>
+  <body>
+    <div class="main-navbar">
+      <div class="menu">
+        <a
+          href="{% url 'base:resume_details' resume_id=resume.resume_id %}"
+          class="item start {% if now_item == 0 %}now{% endif %}"
+        >
+          Your Details
+          <div class="triangle"></div>
+        </a>
+        <a
+          href="{% url 'base:resume_bio' resume_id=resume.resume_id %}"
+          class="item {% if now_item == 1 %}now{% endif %}"
+        >
+          <div class="t1"></div>
+          <div class="t2"></div>
+          Short Bio
+          <div class="triangle"></div>
+        </a>
+        <a
+          href="{% url 'base:resume_experience' resume_id=resume.resume_id %}"
+          class="item {% if now_item == 2 %}now{% endif %}"
+        >
+          <div class="t1"></div>
+          <div class="t2"></div>
+          Experience
+          <div class="triangle"></div>
+        </a>
+        <a
+          href="{% url 'base:resume_education' resume_id=resume.resume_id %}"
+          class="item {% if now_item == 3 %}now{% endif %}"
+        >
+          <div class="t1"></div>
+          <div class="t2"></div>
+          Education
+          <div class="triangle"></div>
+        </a>
+        <a
+          href="{% url 'base:resume_skills' resume_id=resume.resume_id %}"
+          class="item end {% if now_item == 4 %}now{% endif %}"
+        >
+          <div class="t1"></div>
+          <div class="t2"></div>
+          Skills
+        </a>
+      </div>
+    </div>
+  </body>
+</html>
