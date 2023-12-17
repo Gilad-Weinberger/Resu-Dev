@@ -37,7 +37,6 @@
       rel="stylesheet"
       href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-light.css"
     />
-    <!-- <meta http-equiv="refresh" content="1"> -->
   </head>
   <body>
     {% include 'components/navbar.html' %}
@@ -75,15 +74,24 @@
             </div>
             {% endfor %}
           </div>
-          <form class="add-form" method="post" enctype="multipart/form-data">
+          <form class="add-exp show" method="post" enctype="multipart/form-data">
             {% csrf_token %}
+            <h2>Add Experience</h2>
             <div class="add-experience">
               <p class="f-job-title">{{ create_form.job_title }}</p>
               <p>{{ create_form.city }} - ({{ create_form.start_date }} - {{ create_form.end_date }})</p>
-              <button class="save" type="submit" name="save">Save</button>
+              <ul class="achiev-list">
+                {% for achiv in exp.achievements.all %}
+                <li class="achiev">{{ achiv.text }}</li>
+                {% endfor %}
+              </ul>
+              <div class="buttons">
+                <button class="create" type="submit" name="create">+ Achievements</button>
+                <button class="save" type="submit" name="save">Save</button>
+              </div>
             </div>
           </form>
-          <form method="post" enctype="multipart/form-data">
+          <form class="save" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <button class="add" type="submit" name="add">
               <i class="fa-solid fa-plus add-icon"></i> Add Experience

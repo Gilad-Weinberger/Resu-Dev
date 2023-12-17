@@ -107,7 +107,8 @@ def resume_experience(request, resume_id):
                     return HttpResponseRedirect(reverse('base:resume_bio', args=[resume_id]))
     else:
         form = ExperienceForm(instance=resume)
-        create_form = ExperienceCreateForm()
+    
+    create_form = ExperienceCreateForm()
 
     all_resume_experiences = resume.experiences.order_by(
         'just_created',

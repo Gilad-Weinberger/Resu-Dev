@@ -17,7 +17,6 @@ body {
   height: calc(100vh - 145px);
   width: calc(40vw - 30px);
   padding: 20px 50px;
-  position: relative;
 }
 .main .resume .edit .title {
   margin: 0px;
@@ -69,24 +68,46 @@ body {
 .main .resume .edit .all-experiences .experience:last-child {
   border-bottom: none;
 }
-.main .resume .edit form button {
+.main .resume .edit form.add-exp {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #dadada;
+}
+.main .resume .edit form.add-exp .buttons {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.main .resume .edit form.add-exp .buttons button {
+  border-radius: 10px;
+  border: none;
+  padding: 10px;
+  background-colr: #e2914e;
   cursor: pointer;
 }
-.main .resume .edit form .add {
+.main .resume .edit form.save button {
+  cursor: pointer;
+}
+.main .resume .edit form.save .add {
   background: none;
   border: none;
   font-size: 15px;
   font-weight: 600;
   margin-top: 5px;
 }
-.main .resume .edit form .add .add-icon {
+.main .resume .edit form.save .add .add-icon {
   border-radius: 50%;
   padding: 5px 6px;
   background-color: black;
   color: white;
   margin-right: 5px;
 }
-.main .resume .edit form .buttons {
+.main .resume .edit form.save .buttons {
   width: calc(40vw - 30px);
   position: absolute;
   bottom: 20px;
@@ -94,17 +115,17 @@ body {
   align-items: center;
   justify-content: space-between;
 }
-.main .resume .edit form .buttons .next,
-.main .resume .edit form .buttons .back {
+.main .resume .edit form.save .buttons .next,
+.main .resume .edit form.save .buttons .back {
   border-radius: 30px;
   padding: 13px 18px;
   font-weight: 700;
   border: none;
 }
-.main .resume .edit form .buttons .next {
+.main .resume .edit form.save .buttons .next {
   background-color: #e2914e;
 }
-.main .resume .edit form .buttons .back {
+.main .resume .edit form.save .buttons .back {
   padding: 13px 28px;
   background-color: white;
   border: 1px solid rgb(155, 155, 155);

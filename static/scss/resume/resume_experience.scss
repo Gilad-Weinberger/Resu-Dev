@@ -21,7 +21,6 @@ body {
       height: calc(100vh - 145px);
       width: $width;
       padding: 20px 50px;
-      position: relative;
       .title {
         margin: 0px;
         margin-bottom: 5px;
@@ -72,7 +71,29 @@ body {
           }
         }
       }
-      form {
+      form.add-exp {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 20px;
+        border-radius: 10px;
+        background-color: #dadada;
+        .buttons{
+          margin-top: 20px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          button{
+            border-radius: 10px;
+            border: none;
+            padding: 10px;
+            background-colr: #e2914e;
+            cursor: pointer;
+          }
+        }
+      }
+      form.save {
         button {
           cursor: pointer;
         }
