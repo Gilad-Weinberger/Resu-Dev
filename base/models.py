@@ -40,7 +40,6 @@ class Experience(models.Model):
     is_current = models.BooleanField(default=False)
     end_date = models.DateField(null=True, blank=True)
     achievements = models.ManyToManyField(Achievement, related_name="achievements")
-    just_created = models.BooleanField(default=True)
 
     def __str__(self):
         return f"{self.user.first_name} {self.user.last_name} | {self.job_title} | Experience"

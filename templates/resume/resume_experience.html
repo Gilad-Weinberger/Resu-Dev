@@ -82,17 +82,20 @@
             <div class="add-experience">
               <p class="f-job-title">{{ exp_form.job_title }}</p>
               <p>{{ exp_form.city }} - ({{ exp_form.start_date }} - {{ exp_form.end_date }})</p>
+              <p>{{ exp_form.is_current }}</p>
               <ul class="achiev-list">
                 {% for achiv in exp.achievements.all %}
                 <li class="achiev">{{ achiv.text }}</li>
                 {% endfor %}
               </ul>
-              <form action="add-achiev" method="post">
+              <div class="add-achiev" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
-                <h2>Add Experience</h2>
-                <p class="achiev-text">{{ achiev_form.text }}</p>
-                <button class="save-achiev" type="submit" name="save-achiev">Save Achievement</button>
-              </form>
+                <h2>Add Achievement</h2>
+                <div class="fields">
+                  <p class="achiev-text">{{ achiev_form.text }}</p>
+                  <button class="save-achiev" type="submit" name="save-achiev">Save Achievement</button>
+                </div>
+              </div>
               <div class="buttons">
                 <button class="create-achiev" type="submit" name="create-achiev">+ Achievement</button>
                 <button class="save-exp" type="submit" name="save-exp">Save Experience</button>
