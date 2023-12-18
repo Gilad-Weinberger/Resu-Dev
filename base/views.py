@@ -90,7 +90,7 @@ def resume_experience(request, resume_id):
         return redirect('base:dashboard')
     
     if request.method == 'POST':
-        if 'add' in request.POST:  
+        if 1 == 2:  
             form = ExperienceCreateForm(request.POST)
             if form.is_valid():
                 experience = form.save(commit=False)
@@ -108,7 +108,8 @@ def resume_experience(request, resume_id):
     else:
         form = ExperienceForm(instance=resume)
     
-    create_form = ExperienceCreateForm()
+    exp_form = ExperienceCreateForm()
+    achiev_form = AchievementCreateForm()
 
     all_resume_experiences = resume.experiences.order_by(
         'just_created',
@@ -122,7 +123,8 @@ def resume_experience(request, resume_id):
         "now_item": now_item,
         "form": form,
         "all_experiences": all_resume_experiences,
-        "create_form": create_form,
+        "exp_form": exp_form,
+        "achiev_form": achiev_form,
     }
     
     return render(request, 'resume/resume_experience.html', context)

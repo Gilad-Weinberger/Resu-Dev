@@ -22,3 +22,8 @@ class ExperienceCreateForm(forms.ModelForm):
     class Meta:
         model = Experience
         fields = '__all__'
+
+class AchievementCreateForm(forms.ModelForm):
+    class Meta:
+        model = Achievement
+        fields = ('text',)

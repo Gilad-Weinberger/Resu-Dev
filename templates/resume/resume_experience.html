@@ -37,6 +37,8 @@
       rel="stylesheet"
       href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-light.css"
     />
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   </head>
   <body>
     {% include 'components/navbar.html' %}
@@ -74,27 +76,34 @@
             </div>
             {% endfor %}
           </div>
-          <form class="add-exp show" method="post" enctype="multipart/form-data">
+          <form class="add-exp" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <h2>Add Experience</h2>
             <div class="add-experience">
-              <p class="f-job-title">{{ create_form.job_title }}</p>
-              <p>{{ create_form.city }} - ({{ create_form.start_date }} - {{ create_form.end_date }})</p>
+              <p class="f-job-title">{{ exp_form.job_title }}</p>
+              <p>{{ exp_form.city }} - ({{ exp_form.start_date }} - {{ exp_form.end_date }})</p>
               <ul class="achiev-list">
                 {% for achiv in exp.achievements.all %}
                 <li class="achiev">{{ achiv.text }}</li>
                 {% endfor %}
               </ul>
+              <form action="add-achiev" method="post">
+                {% csrf_token %}
+                <h2>Add Experience</h2>
+                <p class="achiev-text">{{ achiev_form.text }}</p>
+                <button class="save-achiev" type="submit" name="save-achiev">Save Achievement</button>
+              </form>
               <div class="buttons">
-                <button class="create" type="submit" name="create">+ Achievements</button>
-                <button class="save" type="submit" name="save">Save</button>
+                <button class="create-achiev" type="submit" name="create-achiev">+ Achievement</button>
+                <button class="save-exp" type="submit" name="save-exp">Save Experience</button>
               </div>
             </div>
           </form>
           <form class="save" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <button class="add" type="submit" name="add">
-              <i class="fa-solid fa-plus add-icon"></i> Add Experience
+              <i class="add-icon fa-solid fa-plus"></i>
+              <span class="add-text">Add Experience</span>
             </button>
             <div class="buttons two">
               <button class="back" type="submit" name="back">Back</button>
@@ -106,5 +115,23 @@
         </div>
       </div>
     </div>
+    <script>
+      $(document).ready(function() {
+        $('.add').on('click', function(e) {
+          e.preventDefault();
+          $('.add-exp').toggleClass('show');
+          $('.add-icon').toggleClass('fa-plus fa-minus');
+          var buttonText = $('.add-text').text();
+          $('.add-text').text(buttonText === 'Add Experience' ? 'Remove Experience' : 'Add Experience');
+        });
+
+        $('.create-achiev').on('click', function(e) {
+          e.preventDefault();
+          $('.add-achiev').toggleClass('show');
+          var buttonText = $('.create-achiev').text();
+          $('.create-achiev').text(buttonText === '+ Achievement' ? '- Achievement' : '+ Achievement');
+        });
+      });
+    </script>
   </body>
 </html>
