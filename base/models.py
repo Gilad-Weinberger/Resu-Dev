@@ -26,6 +26,7 @@ class City(models.Model):
         return f'{self.name}, {self.country.name}'
 
 class Achievement(models.Model):
+    achievement_id = models.CharField(max_length=30, blank=True, null=True, unique=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     text = models.TextField()
 
@@ -33,6 +34,7 @@ class Achievement(models.Model):
         return f'{self.user.first_name} {self.user.last_name} | {self.text}'
 
 class Experience(models.Model):
+    experience_id = models.CharField(max_length=30, blank=True, null=True, unique=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     job_title = models.CharField(max_length=1000)
     city = models.ForeignKey(City, on_delete=models.CASCADE)
@@ -40,6 +42,18 @@ class Experience(models.Model):
     is_current = models.BooleanField(default=False)
     end_date = models.DateField(null=True, blank=True)
     achievements = models.ManyToManyField(Achievement, related_name="achievements")
+    just_created = models.BooleanField(default=True)
+
+    def save(self, *args, **kwargs):
+        if not self.experience_id:
+            last_experience = Experience.objects.order_by('-experience_id').first()
+            if last_experience and last_experience.experience_id:
+                last_id = int(last_experience.experience_id)
+                new_id = str(last_id + 1)
+            else:
+                new_id = '1'
+            self.experience_id = new_id
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return f"{self.user.first_name} {self.user.last_name} | {self.job_title} | Experience"
@@ -98,7 +112,7 @@ class Others_Skill(models.Model):
         return self.name
 
 class Resume(models.Model):
-    resume_id = models.CharField(max_length=30, blank=True, null=True)
+    resume_id = models.CharField(max_length=30, blank=True, null=True, unique=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     profile_image = models.ImageField(
         null=True,

@@ -85,21 +85,21 @@ def resume_experience(request, resume_id):
     user = request.user
     resume = get_object_or_404(Resume, resume_id=resume_id)
     now_item = 2
+    show_exp_form = False
 
     if user != resume.user:
         return redirect('base:dashboard')
     
     if request.method == 'POST':
         if 'save-exp' in request.POST: 
-            form = ExperienceCreateForm(request.POST)
-            if form.is_valid():
-                experience = form.save(commit=False)
-                experience.user = request.user
-                experience.save()
-                resume.experiences.add(experience)
-                return HttpResponseRedirect(reverse('base:resume_experience', args=[resume_id]))
-        elif 'save-achiev' in request.POST:
-            randomNumber = 1
+            exp_form = ExperienceCreateForm(request.POST)
+            if exp_form.is_valid():
+                new_experience = exp_form.save(commit=False)
+                new_experience.user = user  # Set the current user
+                new_experience.just_created = True  # Optional: Set any other fields if needed
+                new_experience.save()
+                # Add the new experience to the resume's experiences
+                resume.experiences.add(new_experience)
         else:
             form = ExperienceForm(request.POST, instance=resume)
             if form.is_valid():
@@ -107,9 +107,8 @@ def resume_experience(request, resume_id):
                     return HttpResponseRedirect(reverse('base:resume_education', args=[resume_id]))
                 elif 'back' in request.POST:
                     return HttpResponseRedirect(reverse('base:resume_bio', args=[resume_id]))
-    else:
-        form = ExperienceForm(instance=resume)
     
+    form = ExperienceForm(instance=resume)
     exp_form = ExperienceCreateForm()
     achiev_form = AchievementCreateForm()
 
@@ -126,6 +125,7 @@ def resume_experience(request, resume_id):
         "all_experiences": all_resume_experiences,
         "exp_form": exp_form,
         "achiev_form": achiev_form,
+        "show_exp_form": show_exp_form,
     }
     
     return render(request, 'resume/resume_experience.html', context)

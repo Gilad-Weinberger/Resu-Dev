@@ -81,17 +81,14 @@ body {
         background-color: #dadada;
         display: none;
         .add-experience {
-          .add-achiev {
-            display: none;
-            &.show {
-              display: block;
-            }
-          }
           .buttons {
             margin-top: 20px;
             display: flex;
             align-items: center;
             justify-content: space-between;
+            .none {
+              visibility: hidden;
+            }
             button {
               border-radius: 10px;
               border: none;
