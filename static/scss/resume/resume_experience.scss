@@ -79,18 +79,30 @@ body {
         padding: 20px;
         border-radius: 10px;
         background-color: #dadada;
-        .buttons{
-          margin-top: 20px;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          button{
-            border-radius: 10px;
-            border: none;
-            padding: 10px;
-            background-color: #e2914e;
-            cursor: pointer;
+        display: none;
+        .add-experience {
+          .add-achiev {
+            display: none;
+            &.show {
+              display: block;
+            }
           }
+          .buttons {
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            button {
+              border-radius: 10px;
+              border: none;
+              padding: 10px;
+              background-color: #e2914e;
+              cursor: pointer;
+            }
+          }
+        }
+        &.show {
+          display: block;
         }
       }
       form.save {

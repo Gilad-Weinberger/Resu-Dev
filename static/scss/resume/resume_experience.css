@@ -76,19 +76,29 @@ body {
   padding: 20px;
   border-radius: 10px;
   background-color: #dadada;
+  display: none;
 }
-.main .resume .edit form.add-exp .buttons {
+.main .resume .edit form.add-exp .add-experience .add-achiev {
+  display: none;
+}
+.main .resume .edit form.add-exp .add-experience .add-achiev.show {
+  display: block;
+}
+.main .resume .edit form.add-exp .add-experience .buttons {
   margin-top: 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.main .resume .edit form.add-exp .buttons button {
+.main .resume .edit form.add-exp .add-experience .buttons button {
   border-radius: 10px;
   border: none;
   padding: 10px;
   background-color: #e2914e;
   cursor: pointer;
+}
+.main .resume .edit form.add-exp.show {
+  display: block;
 }
 .main .resume .edit form.save button {
   cursor: pointer;
