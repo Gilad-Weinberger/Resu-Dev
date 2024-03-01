@@ -76,7 +76,7 @@
             </div>
             {% endfor %}
           </div>
-          <form class="add-exp {% if show_exp_form %}show{% endif %}" method="post" action="{% url 'base:resume_experience' resume_id %}" enctype="multipart/form-data">
+          <form class="add-exp {% if show_exp_form %}show{% endif %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <h2>Add Experience</h2>
             <div class="add-experience">

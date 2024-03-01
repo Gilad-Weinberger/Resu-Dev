@@ -95,10 +95,9 @@ def resume_experience(request, resume_id):
             exp_form = ExperienceCreateForm(request.POST)
             if exp_form.is_valid():
                 new_experience = exp_form.save(commit=False)
-                new_experience.user = user  # Set the current user
-                new_experience.just_created = True  # Optional: Set any other fields if needed
+                new_experience.user = user  
+                new_experience.just_created = True  
                 new_experience.save()
-                # Add the new experience to the resume's experiences
                 resume.experiences.add(new_experience)
         else:
             form = ExperienceForm(request.POST, instance=resume)
