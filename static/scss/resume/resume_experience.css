@@ -84,6 +84,9 @@ body {
   align-items: center;
   justify-content: space-between;
 }
+.main .resume .edit form.add-exp .add-experience .buttons .none {
+  visibility: hidden;
+}
 .main .resume .edit form.add-exp .add-experience .buttons button {
   border-radius: 10px;
   border: none;

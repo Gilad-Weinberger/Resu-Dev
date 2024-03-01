@@ -76,7 +76,7 @@
             </div>
             {% endfor %}
           </div>
-          <form class="add-exp" method="post" enctype="multipart/form-data">
+          <form class="add-exp {% if show_exp_form %}show{% endif %}" method="post" action="{% url 'base:resume_experience' resume_id %}" enctype="multipart/form-data">
             {% csrf_token %}
             <h2>Add Experience</h2>
             <div class="add-experience">
@@ -88,16 +88,8 @@
                 <li class="achiev">{{ achiv.text }}</li>
                 {% endfor %}
               </ul>
-              <div class="add-achiev" method="post" enctype="multipart/form-data">
-                {% csrf_token %}
-                <h2>Add Achievement</h2>
-                <div class="fields">
-                  <p class="achiev-text">{{ achiev_form.text }}</p>
-                  <button class="save-achiev" type="submit" name="save-achiev">Save Achievement</button>
-                </div>
-              </div>
               <div class="buttons">
-                <button class="create-achiev" type="submit" name="create-achiev">+ Achievement</button>
+                <button class="none"></button>
                 <button class="save-exp" type="submit" name="save-exp">Save Experience</button>
               </div>
             </div>
