@@ -2,6 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Handlee&display=swap");
 
 $color-dark: #220c2d;
+$color-orange: #e2914e;
 $color-light-orange: #fbc99d;
 
 body {
@@ -10,5 +11,141 @@ body {
 }
 .main {
   width: calc(100vw - 220px);
-  padding: 8px 100px;
+  padding: 8px 0px 0px 0px;
+  .resume {
+    display: flex;
+    align-items: center;
+    $width: calc(40vw - 30px);
+    $half-width: calc(($width - 50px) / 2);
+    .edit {
+      height: calc(100vh - 145px);
+      width: $width;
+      padding: 20px 50px;
+      .title {
+        margin: 0px;
+        margin-bottom: 5px;
+      }
+      .semi-title {
+        margin: 0px;
+      }
+      .all-experiences {
+        width: $width;
+        .experience {
+          border-bottom: 1px solid #ccc;
+          .top {
+            margin-top: 20px;
+            width: $width;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            .job-title {
+              margin: 0px;
+            }
+            .right {
+              display: flex;
+              align-items: center;
+              width: 60px;
+              i {
+                background-color: #e3e3e2;
+                padding: 6px;
+                border-radius: 50%;
+                font-size: 14px;
+              }
+              .edit-icon {
+                margin-right: 20px;
+              }
+            }
+          }
+          .city-time {
+            margin-top: 10px;
+            margin-bottom: 0px;
+          }
+          .achiev-list {
+            padding-left: 25px;
+            .achiev {
+              font-size: 15px;
+            }
+          }
+          &:last-child {
+            border-bottom: none;
+          }
+        }
+      }
+      form.add-exp {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 20px;
+        border-radius: 10px;
+        background-color: #dadada;
+        display: none;
+        .add-experience {
+          .buttons {
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            button {
+              border-radius: 10px;
+              border: none;
+              padding: 10px;
+              background-color: #e2914e;
+              cursor: pointer;
+            }
+          }
+        }
+        &.show {
+          display: block;
+        }
+      }
+      form.save {
+        button {
+          cursor: pointer;
+        }
+        .add {
+          background: none;
+          border: none;
+          font-size: 15px;
+          font-weight: 600;
+          margin-top: 5px;
+          .add-icon {
+            border-radius: 50%;
+            padding: 5px 6px;
+            background-color: black;
+            color: white;
+            margin-right: 5px;
+          }
+        }
+        .buttons {
+          width: $width;
+          position: absolute;
+          bottom: 20px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          .next,
+          .back {
+            border-radius: 30px;
+            padding: 13px 18px;
+            font-weight: 700;
+            border: none;
+          }
+          .next {
+            background-color: $color-orange;
+          }
+          .back {
+            padding: 13px 28px;
+            background-color: white;
+            border: 1px solid rgb(155, 155, 155);
+          }
+        }
+      }
+    }
+    .result {
+      height: calc(100vh - 145px);
+      width: $width;
+      padding: 20px 50px;
+    }
+  }
 }

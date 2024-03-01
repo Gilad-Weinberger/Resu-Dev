@@ -27,3 +27,13 @@ class AchievementCreateForm(forms.ModelForm):
     class Meta:
         model = Achievement
         fields = ('text',)
+
+class DegreeForm(forms.ModelForm):
+    class Meta:
+        model = Resume
+        fields = ('degrees',)
+
+class DegreeCreateForm(forms.ModelForm):
+    class Meta:
+        model = Degree
+        fields = '__all__'

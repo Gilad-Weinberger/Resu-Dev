@@ -74,6 +74,7 @@ class Degree(models.Model):
     degree_type = models.ForeignKey(Degree_Type, on_delete=models.CASCADE)
     degree_subjects = models.ManyToManyField(Degree_Subject, related_name="degree_subjects")
     university = models.ForeignKey(University, on_delete=models.CASCADE)
+    education_year = models.DateField()
 
     def __str__(self):
         subjects = self.degree_subjects.values_list('name', flat=True)

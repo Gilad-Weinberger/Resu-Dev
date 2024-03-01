@@ -91,15 +91,29 @@ def resume_experience(request, resume_id):
     
     if request.method == 'POST':
         if 'save-exp' in request.POST: 
-            form = ExperienceCreateForm(request.POST)
-            if form.is_valid():
-                experience = form.save(commit=False)
-                experience.user = request.user
-                experience.save()
-                resume.experiences.add(experience)
-                return HttpResponseRedirect(reverse('base:resume_experience', args=[resume_id]))
-        elif 'save-achiev' in request.POST:
-            randomNumber = 1
+            job_title = request.POST.get('job_title')
+            city_id = request.POST.get('city')
+            start_date_str = request.POST.get('start_date')
+            end_date_str = request.POST.get('end_date')
+            is_current = 'is_current' in request.POST
+
+            city = get_object_or_404(City, id=city_id)
+            start_date = datetime.strptime(start_date_str, '%d/%m/%Y').strftime('%Y-%m-%d')
+            end_date = datetime.strptime(end_date_str, '%d/%m/%Y').strftime('%Y-%m-%d') if end_date_str else None
+
+            experience = Experience.objects.create(
+                user = user,
+                job_title=job_title,
+                city=city,
+                start_date=start_date,
+                end_date=end_date,
+                is_current=is_current
+            )
+            experience.save()
+            resume.experiences.add(experience)
+            return HttpResponseRedirect(reverse('base:resume_experience', args=[resume_id]))
+        elif 'create-achieve' in request.POST: 
+            now_item = 2
         else:
             form = ExperienceForm(request.POST, instance=resume)
             if form.is_valid():
@@ -139,10 +153,24 @@ def resume_education(request, resume_id):
     if user != resume.user:
         return redirect('base:dashboard')
     
+    if request.method == 'POST':
+        now_item = 3
+    else:
+        form = DegreeForm()
+
+    degree_form = DegreeCreateForm()
+
+    all_resume_degrees = resume.degrees.order_by(
+        '-education_year',
+    )
+    
     context = {
         "user": user,
         'resume': resume,
-        "now_item": now_item
+        "now_item": now_item,
+        "all_degrees": all_resume_degrees,
+        "form": form,
+        "degree_form": degree_form
     }
     
     return render(request, 'resume/resume_education.html', context)

@@ -78,12 +78,6 @@ body {
   background-color: #dadada;
   display: none;
 }
-.main .resume .edit form.add-exp .add-experience .add-achiev {
-  display: none;
-}
-.main .resume .edit form.add-exp .add-experience .add-achiev.show {
-  display: block;
-}
 .main .resume .edit form.add-exp .add-experience .buttons {
   margin-top: 20px;
   display: flex;
