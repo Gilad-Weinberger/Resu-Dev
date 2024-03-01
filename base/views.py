@@ -138,10 +138,24 @@ def resume_education(request, resume_id):
     if user != resume.user:
         return redirect('base:dashboard')
     
+    if request.method == 'POST':
+        now_item = 3
+    else:
+        form = DegreeForm()
+
+    degree_form = DegreeCreateForm()
+
+    all_resume_degrees = resume.degrees.order_by(
+        '-education_year',
+    )
+    
     context = {
         "user": user,
         'resume': resume,
-        "now_item": now_item
+        "now_item": now_item,
+        "all_degrees": all_resume_degrees,
+        "form": form,
+        "degree_form": degree_form
     }
     
     return render(request, 'resume/resume_education.html', context)

@@ -5,13 +5,107 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ResuDev | DashBoard</title>
-    <link rel="stylesheet" href="{% static 'scss/resume/resume_education.css' %}" />
+    <title>ResuDev | Education</title>
+    <link
+      rel="stylesheet"
+      href="{% static 'scss/resume/resume_education.css' %}"
+    />
+    <!-- Font Awesome: -->
+    <link
+      rel="stylesheet"
+      data-purpose="Layout StyleSheet"
+      title="Web Awesome"
+      href="/css/app-wa-2e45578ecf3b28ce6383d10b8c0bf4d0.css?vsn=d"
+    />
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.5.1/css/all.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-thin.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-solid.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-regular.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-light.css"
+    />
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   </head>
   <body>
     {% include 'components/navbar.html' %}
     <div class="main">
       {% include 'components/resume_navbar.html' %}
+      <div class="resume">
+        <div class="edit">
+          <h2 class="title">Education</h2>
+          <p class="semi-title">Review your education history.</p>
+          <div class="all-experiences">
+            {% for degree in all_degrees %}
+            <div class="experience" data-degreeid="{{ degree.id }}">
+              <div class="top">
+                <div class="d">
+                  <h3 class="degree-title">{{ degree.degree_type }} in </h3>
+                  {% for subject in degree.degree_subjects.all %}
+                  <p>{{ subject }}</p>
+                </div>
+                {% endfor %}
+                <div class="right">
+                  <i class="fa-regular fa-pen-to-square edit-icon"></i>
+                  <i class="fa-regular fa-trash delete-icon"></i>
+                </div>
+              </div>
+              <p class="city-time">
+                {{ degree.university }} - ({{ degree.education_year|date:"Y" }})
+              </p>
+            </div>
+            {% endfor %}
+          </div>
+          <form class="add-degree" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="add-degree">
+              <p class="f-degree-type">{{ degree_form.degree_type }}</p>
+              <p>{{ degree_form.university }} - ({{ degree_form.education.year }})</p>
+              <div class="buttons">
+                <button class="empty" type="submit" name="empty">.</button>
+                <button class="save-degree" type="submit" name="save-exp">Save Experience</button>
+              </div>
+            </div>
+          </form>
+          <form class="save" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <button class="add" type="submit" name="add">
+              <i class="add-icon fa-solid fa-plus"></i>
+              <span class="add-text">Add Education</span>
+            </button>
+            <div class="buttons two">
+              <button class="back" type="submit" name="back">Back</button>
+              <button class="next" type="submit" name="next">
+                Save & Next
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
+    <script>
+      $(document).ready(function() {
+        $('.add').on('click', function(e) {
+          e.preventDefault();
+          $('.add-exp').toggleClass('show');
+          $('.add-icon').toggleClass('fa-plus fa-minus');
+          var buttonText = $('.add-text').text();
+          $('.add-text').text(buttonText === 'Add Education' ? 'Remove Education' : 'Add Education');
+        });
+      });
+    </script>
   </body>
 </html>
