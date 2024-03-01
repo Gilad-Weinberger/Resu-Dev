@@ -92,7 +92,6 @@ def resume_experience(request, resume_id):
     
     if request.method == 'POST':
         if 'save-exp' in request.POST: 
-<<<<<<< HEAD
             job_title = request.POST.get('job_title')
             city_id = request.POST.get('city')
             start_date_str = request.POST.get('start_date')
@@ -116,16 +115,6 @@ def resume_experience(request, resume_id):
             return HttpResponseRedirect(reverse('base:resume_experience', args=[resume_id]))
         elif 'create-achieve' in request.POST: 
             now_item = 2
-=======
-            exp_form = ExperienceCreateForm(request.POST)
-            if exp_form.is_valid():
-                new_experience = exp_form.save(commit=False)
-                new_experience.user = user  # Set the current user
-                new_experience.just_created = True  # Optional: Set any other fields if needed
-                new_experience.save()
-                # Add the new experience to the resume's experiences
-                resume.experiences.add(new_experience)
->>>>>>> f9cf60199713a8ed477a9935fed148443dbd6320
         else:
             form = ExperienceForm(request.POST, instance=resume)
             if form.is_valid():
